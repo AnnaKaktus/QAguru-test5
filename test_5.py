@@ -1,6 +1,7 @@
 from selene import browser, have, be, by
 import os.path
 
+
 def test_reg_from():
     browser.open('/automation-practice-form')
 
@@ -31,21 +32,7 @@ def test_reg_from():
     browser.element('#submit').press_enter()
 
     browser.element('.modal-header').should(have.text('Thanks for submitting the form'))
-    browser.element('.table-responsive').should(have.text(
-        'Anna MylastName' and
-        'kaktus54au@gmail.com' and
-        'Female' and
-        '9138018444' and
-        '09 April 1983' and
-        'Testing' and
-        'Sports' 'Reading' and
-        'kitty.jpeg' and
-        'Tomsk Any Street, 123' and
-        'Rajasthan Jaipur'
-    ))
+    browser.element('.table-responsive').should(have.exact_texts('Anna MylastName', 'kaktus54au@gmail.com', 'Female', '9138018444', '09 April,1983',
+                         'Biology', 'Sports, Reading', 'kitty.jpeg', 'Tomsk Any Street, 123', 'Rajasthan Jaipur'))
 
     browser.element('#closeLargeModal').press_enter()
-
-
-
-
