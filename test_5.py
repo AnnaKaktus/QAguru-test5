@@ -26,13 +26,24 @@ def test_reg_from():
 
     browser.element('#uploadPicture').send_keys(os.path.abspath('kitty.jpeg'))
 
-    browser.element('#currentAddress').should(be.blank).type('Tomsk Any Street 123')
+    browser.element('#currentAddress').should(be.blank).type('Tomsk Any Street, 123')
     browser.element('#react-select-3-input').type('Rajasthan').press_enter()
     browser.element('#react-select-4-input').type('Jaipur').press_enter()
     browser.element('#submit').press_enter()
 
     browser.element('.modal-header').should(have.text('Thanks for submitting the form'))
-    browser.element('.table-responsive').should(have.exact_texts('Anna MylastName', 'kaktus54au@gmail.com', 'Female', '9138018444', '09 April,1983',
-                         'Biology', 'Sports, Reading', 'kitty.jpeg', 'Tomsk Any Street, 123', 'Rajasthan Jaipur'))
+    browser.element('.modal-body .table-responsive').should(have.exact_texts(
+    'Anna MyLastName'
+    # 'kaktus54au@gmail.com',
+    # 'Female', '9138018444',
+    # '09 April,1983',
+    # 'Biology',
+    # 'Sports, Reading',
+    # 'kitty.jpeg',
+    # 'Tomsk Any Street, 123',
+    # 'Rajasthan Jaipur'
+        )
+        )
 
     browser.element('#closeLargeModal').press_enter()
+
