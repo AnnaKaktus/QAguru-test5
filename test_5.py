@@ -32,18 +32,18 @@ def test_reg_from():
     browser.element('#submit').press_enter()
 
     browser.element('.modal-header').should(have.text('Thanks for submitting the form'))
-    browser.element('.modal-body .table-responsive').should(have.exact_texts(
-    'Anna MyLastName'
-    # 'kaktus54au@gmail.com',
-    # 'Female', '9138018444',
-    # '09 April,1983',
-    # 'Biology',
-    # 'Sports, Reading',
-    # 'kitty.jpeg',
-    # 'Tomsk Any Street, 123',
-    # 'Rajasthan Jaipur'
+    browser.all('.table td:nth-child(2)').should(
+        have.texts(
+            'Anna MyLastName',
+            'kaktus54au@gmail.com',
+            'Female', '9138018444',
+            '09 April,1983',
+            'Biology',
+            'Sports, Reading',
+            'kitty.jpeg',
+            'Tomsk Any Street, 123',
+            'Rajasthan Jaipur'
         )
-        )
+    )
 
     browser.element('#closeLargeModal').press_enter()
-
