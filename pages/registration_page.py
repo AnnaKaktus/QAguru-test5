@@ -64,8 +64,18 @@ class RegistrationPage:
     def close_modal(self):
         browser.element('#closeLargeModal').press_enter()
 
-    def read_modat_header(self):
+    def read_modal_header(self):
         return browser.element('.modal-header')
 
     def read_table_data(self):
         return browser.all('.table td:nth-child(2)')
+
+    def should_have_registered(self, first_name, last_name, email, gender, phone, day, month, year, subject,
+                           hobby_1, hobby_2, picture, address, state, city):
+
+        self.read_modal_header().should(have.text("Thanks for submitting the form"))
+
+        self.read_table_data().should(
+            have.texts(f'{first_name} {last_name}', email, gender, phone, f'{day} {month},{year}', subject,
+                       f'{hobby_1}, {hobby_2}', picture, address, f'{state} {city}'))
+

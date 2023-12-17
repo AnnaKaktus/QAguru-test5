@@ -40,12 +40,8 @@ def test_reg_from():
 
     page.submit()
 
-    page.read_modat_header().should(have.text("Thanks for submitting the form"))
-
-    page.read_table_data().should(
-        have.texts(f"{first_name} {last_name}", email, gender, phone, f"{day} {month},{year}", subject,
-                   f"{hobby_1}, {hobby_2}", picture, address, f"{state} {city}")
-    )
+    page.should_have_registered(first_name, last_name, email, gender, phone, day, month, year, subject,
+                           hobby_1, hobby_2, picture, address, state, city)
 
     page.close_modal()
 
