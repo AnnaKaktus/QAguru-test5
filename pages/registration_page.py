@@ -1,5 +1,4 @@
 from selene import browser, have, be, by
-import os.path
 from resources import resources
 
 
