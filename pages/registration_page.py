@@ -1,5 +1,6 @@
 from selene import browser, have, be, by
 import os.path
+from resources import resources
 
 
 class RegistrationPage:
@@ -34,7 +35,7 @@ class RegistrationPage:
             elif hobby == "Music":
                 browser.element("[for='hobbies-checkbox-3']").click()
 
-        browser.element('#uploadPicture').send_keys(os.path.abspath(user.picture))
+        browser.element('#uploadPicture').send_keys(resources.path(user.picture))
         browser.element('#currentAddress').should(be.blank).type(user.address)
         browser.element('#react-select-3-input').type(user.state).press_enter()
         browser.element('#react-select-4-input').type(user.city).press_enter()
@@ -54,6 +55,6 @@ class RegistrationPage:
         self.read_modal_header().should(have.text("Thanks for submitting the form"))
 
         self.read_table_data().should(
-            have.texts(f'{user.first_name} {user.last_name}', user.email, user.gender, user.phone, f'{user.day} {user.month},{user.year}', user.subject,
+            have.texts(f'{user.first_name} {user.last_name}', user.email, user.gender, user.phone,
+                       f'{user.day} {user.month},{user.year}', user.subject,
                        ", ".join(user.hobbies), user.picture, user.address, f'{user.state} {user.city}'))
-

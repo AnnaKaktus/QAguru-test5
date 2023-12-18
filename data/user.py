@@ -1,5 +1,23 @@
-from pages.registration_page import RegistrationPage
-from user.user import User
+import dataclasses
+
+
+@dataclasses.dataclass
+class User:
+    first_name: str
+    last_name: str
+    email: str
+    gender: str
+    phone: str
+    month: str
+    year: str
+    day: str
+    subject: str
+    hobbies: [str]
+    picture: str
+    address: str
+    state: str
+    city: str
+
 
 my_test_user = User(
     first_name="Anna",
@@ -17,12 +35,3 @@ my_test_user = User(
     state="Rajasthan",
     city="Jaipur",
 )
-
-
-def test_reg_from():
-    page = RegistrationPage()
-    page.register(my_test_user)
-
-    page.should_have_registered(my_test_user)
-
-    page.close_modal()
