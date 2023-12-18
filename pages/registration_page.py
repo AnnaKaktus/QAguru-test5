@@ -1,5 +1,5 @@
 from selene import browser, have, be, by
-import os.path
+from resources import resources
 
 
 class RegistrationPage:
@@ -47,7 +47,7 @@ class RegistrationPage:
             browser.element("[for='hobbies-checkbox-3']").click()
 
     def upload_picture(self, picture):
-        browser.element('#uploadPicture').send_keys(os.path.abspath(picture))
+        browser.element('#uploadPicture').send_keys(resources.path(picture))
 
     def fill_address(self, address):
         browser.element('#currentAddress').should(be.blank).type(address)
@@ -71,11 +71,10 @@ class RegistrationPage:
         return browser.all('.table td:nth-child(2)')
 
     def should_have_registered(self, first_name, last_name, email, gender, phone, day, month, year, subject,
-                           hobby_1, hobby_2, picture, address, state, city):
+                               hobby_1, hobby_2, picture, address, state, city):
 
         self.read_modal_header().should(have.text("Thanks for submitting the form"))
 
         self.read_table_data().should(
             have.texts(f'{first_name} {last_name}', email, gender, phone, f'{day} {month},{year}', subject,
                        f'{hobby_1}, {hobby_2}', picture, address, f'{state} {city}'))
-
