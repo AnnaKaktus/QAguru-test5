@@ -1,6 +1,6 @@
 from selene import browser, have, be, by
 import os.path
-
+from resources import resources
 
 def test_reg_from():
     browser.open('/automation-practice-form')
@@ -24,7 +24,7 @@ def test_reg_from():
     browser.element('label[for="hobbies-checkbox-1"]').click()
     browser.element('label[for="hobbies-checkbox-2"]').click()
 
-    browser.element('#uploadPicture').send_keys(os.path.abspath('kitty.jpeg'))
+    browser.element('#uploadPicture').send_keys(resources.path('kitty.jpeg'))
 
     browser.element('#currentAddress').should(be.blank).type('Tomsk Any Street, 123')
     browser.element('#react-select-3-input').type('Rajasthan').press_enter()
