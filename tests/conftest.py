@@ -5,8 +5,8 @@ from selenium.webdriver.chrome.options import Options
 from selene import Browser, Config
 from utils import attach
 
-@pytest.fixture(scope='function')
-def browser_management(request):
+@pytest.fixture(autouse=True)
+def browser_management():
     options = Options()
     selenoid_capabilities = {
         "browserName": "chrome",
