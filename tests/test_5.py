@@ -3,7 +3,7 @@ import os.path
 from resources import resources
 
 def test_reg_from():
-    browser.open('/automation-practice-form')
+    browser.open('https://demoqa.com/automation-practice-form')
 
     browser.element('.pattern-backgound').should(have.exact_text('Practice Form')).click()
 
