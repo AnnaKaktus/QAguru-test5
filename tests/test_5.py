@@ -1,5 +1,5 @@
 from selene import browser, have, be, by
-import os.path
+# import os.path
 from resources import resources
 
 def test_reg_from():
