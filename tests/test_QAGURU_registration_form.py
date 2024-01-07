@@ -1,6 +1,7 @@
 from selene import browser, have, be, by
 from data import resources
 
+
 def test_registration_form():
     browser.open('https://demoqa.com/automation-practice-form')
 
