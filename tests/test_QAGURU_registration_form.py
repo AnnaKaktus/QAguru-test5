@@ -1,8 +1,7 @@
 from selene import browser, have, be, by
-# import os.path
-from resources import resources
+from data import resources
 
-def test_reg_from():
+def test_registration_form():
     browser.open('https://demoqa.com/automation-practice-form')
 
     browser.element('.pattern-backgound').should(have.exact_text('Practice Form')).click()
