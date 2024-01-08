@@ -2,6 +2,7 @@ from selene import browser, have, be, by
 from data import resources
 import allure
 
+
 def test_registration_form():
     with allure.step("Открываем страницу формы регистрации в браузере"):
         browser.open('https://demoqa.com/automation-practice-form')
